@@ -8,7 +8,8 @@ ReadAndCal = function(fname)
 ReadImg = function(fname)
 {
 	img <- readJPEG(fname)
-	par(mar=c(0,0,0,0))
+  op <- par(mar=c(0,0,0,0))
+  on.exit(op)
 	plot.new()
 	rasterImage(img,0,0,1,1)
 }
