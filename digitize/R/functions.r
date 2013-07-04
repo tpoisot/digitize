@@ -1,15 +1,16 @@
 ReadAndCal = function(fname)
 {
-	img <- read.jpeg(fname)
-	plot(img)
+	ReadImg(fname)
 	calpoints <- locator(n=4,type='p',pch=4,col='blue',lwd=2)
 	return(calpoints)
 }
 
 ReadImg = function(fname)
 {
-	img <- read.jpeg(fname)
-	plot(img)
+	img <- readJPEG(fname)
+	par(mar=c(0,0,0,0))
+	plot.new()
+	rasterImage(img,0,0,1,1)
 }
 
 DigitData = function(col='red',type='p',...)
