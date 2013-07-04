@@ -9,7 +9,7 @@ ReadImg = function(fname)
 {
 	img <- readJPEG(fname)
   op <- par(mar=c(0,0,0,0))
-  on.exit(op)
+  on.exit(par(op))
 	plot.new()
 	rasterImage(img,0,0,1,1)
 }
