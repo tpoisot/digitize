@@ -1,10 +1,10 @@
 Package: digitize
-Version: 0.0.1-07
-Date: 2010-06-03
+Version: 0.0.2
+Date: 2013-07-04
 Title: digitize : a plot digitizer in R
-Author: Timothee Poisot <tpoisot@um2.fr>
+Author: Timothee Poisot <tpoisot@um2.fr>, Rene Sachse <rene.sachse@googlemail.com>
 Maintainer: Timothee Poisot <tpoisot@um2.fr>
-Depends: R (>= 2.2.0), ReadImages
+Depends: R (>= 2.2.0), jpeg
 Description: Allows to get the data from a graph by providing calibration points
 License: GPL (>= 2) 
 URL: http://www.timotheepoisot.fr/r
