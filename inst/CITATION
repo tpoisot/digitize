@@ -1,0 +1,13 @@
+citEntry(entry = "Article",
+  title        = "The digitize package: extracting numerical data from scatterplots",
+  author       = personList(as.person("T. Poisot")),
+  journal      = "The R Journal",
+  year         = "2011",
+  volume       = "3",
+  number       = "1",
+  pages        = "25-26",
+  url          = "http://rjournal.github.io/archive/2011-1/RJournal_2011-1.pdf#page=25",
+  textVersion  = paste("Poisot, T.", "The digitize package: extracting
+	  numerical data from scatterplots.",  "The R Journal 3.1 (2011): 25-26."
+	  )
+  )
