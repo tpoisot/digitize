@@ -1,4 +1,10 @@
-
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+		       collapse = TRUE,
+		         comment = "#>",
+		         fig.path = "README-"
+			 )
+```
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 digitize : a plot digitizer in R
@@ -22,25 +28,8 @@ Read a [tutorial from Luke Miller](http://lukemiller.org/index.php/2011/06/digit
 
 ## Citation
 
-
-```r
+```{r}
 citation('digitize')
-#> 
-#>   Poisot, T. The digitize package: extracting numerical data from
-#>   scatterplots. The R Journal 3.1 (2011): 25-26.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Article{,
-#>     title = {The digitize package: extracting numerical data from scatterplots},
-#>     author = {T. Poisot},
-#>     journal = {The R Journal},
-#>     year = {2011},
-#>     volume = {3},
-#>     number = {1},
-#>     pages = {25-26},
-#>     url = {http://rjournal.github.io/archive/2011-1/RJournal_2011-1.pdf#page=25},
-#>   }
 ```
 
 ## Limitations
