@@ -1,3 +1,4 @@
+#' @export
 ReadAndCal = function(fname)
 {
 	ReadImg(fname)
@@ -7,13 +8,14 @@ ReadAndCal = function(fname)
 
 ReadImg = function(fname)
 {
-	img <- readJPEG(fname)
+	img <- readbitmap::read.bitmap(fname)
   op <- par(mar=c(0,0,0,0))
   on.exit(par(op))
 	plot.new()
 	rasterImage(img,0,0,1,1)
 }
 
+#' @export
 DigitData = function(col='red',type='p',...)
 {
 	type <- ifelse(type=='b','o',type)
@@ -21,6 +23,7 @@ DigitData = function(col='red',type='p',...)
 	locator(type=type,col=col,...)
 }
 
+#' @export
 Calibrate = function(data,calpoints,x1,x2,y1,y2)
 {
 	x 		<- calpoints$x[c(1,2)]

@@ -43,7 +43,8 @@ citation('digitize')
 #>   }
 ```
 
-## Limitations
+## Image Types
 
-Currently only works on *jpeg* images, but should be easy to expand by
-rewriting `ReadImg`.
+
+Works with three bitmap image formats (jpeg, png, bmp), automatically detecting
+the image type using package `readbitmap`.
