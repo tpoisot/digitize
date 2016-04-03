@@ -12,5 +12,6 @@ Description: A package to digitize data from a graph; it requires user input for
 License: GPL (>= 2)
 URL: http://www.poisotlab.io/
 Imports:
+    graphics,
     readbitmap (>= 0.1-4)
 RoxygenNote: 5.0.1
