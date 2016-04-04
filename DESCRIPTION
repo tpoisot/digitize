@@ -2,9 +2,9 @@ Package: digitize
 Version: 0.0.3
 Date: 2016-03-23
 Title: digitize : a plot digitizer in R
-Author: Timothee Poisot <tpoisot@um2.fr>, Rene Sachse
+Author: Timothee Poisot <tim@poisotlab.io>, Rene Sachse
     <rene.sachse@googlemail.com>, Jaime Ashander <jashander@ucdavis.edu>
-Maintainer: Timothee Poisot <tpoisot@um2.fr>
+Maintainer: Jaime Ashander <jashander@ucdavis.edu>
 Depends:
     R (>= 2.2.0)
 Description: A package to digitize data from a graph; it requires user input for
