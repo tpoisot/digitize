@@ -36,13 +36,13 @@ Calibrate <- function(data, calpoints, x1, x2, y1, y2)
 {
   x 		<- calpoints$x[c(1, 2)]
   y 		<- calpoints$y[c(3, 4)]
-
+  
   cx <- lm(formula = c(x1, x2) ~ c(x))$coeff
   cy <- lm(formula = c(y1, y2) ~ c(y))$coeff
-
+  
   data$x <- data$x * cx[2] + cx[1]
   data$y <- data$y * cy[2] + cy[1]
-
+  
   return(as.data.frame(data))
 }
 
@@ -78,41 +78,49 @@ Calibrate <- function(data, calpoints, x1, x2, y1, y2)
 #' mydata <- digitize(tmp)
 #' }
 #' @export
-digitize = function(image_filename, ..., x1=NA, x2=NA, y1=NA, y2=NA) {
+digitize = function(image_filename,
+                    ...,
+                    x1 = NA,
+                    x2 = NA,
+                    y1 = NA,
+                    y2 = NA) {
   pt_names <- c("x1", "x2", "y1", "y2")
   instructCal(pt_names)
-
+  
   cal <- ReadAndCal(image_filename)
-
+  
   if (any(is.na(get(pt_names)))) {
     ## I would abstract this into a seperate function but the assign
     ## below magics the vars x1, ..y2 into their appropriate vals
     ## and need to deal with environments to do that...
     point_vals <- getVals(pt_names)
-    for(p in names(point_vals))
+    for (p in names(point_vals))
       assign(p, point_vals[[p]])
   }
-
+  
   cat("\n\n")
-  cat("..............NOW .............",
-      "Click all the data.",
-      "Right click when done!", sep = "\n\n")
+  cat(
+    "..............NOW .............",
+    "Click all the data.",
+    "Right click when done!",
+    sep = "\n\n"
+  )
   cat("\n\n")
   data <- DigitData(...)
-
+  
   out <- Calibrate(data, cal, x1, x2, y1, y2)
   row.names(out) <- NULL
   return(out)
 }
 
-getVals <- function(names){
+getVals <- function(names) {
   vals <- list()
-  for(p in names){
+  for (p in names) {
     bad <- TRUE
-    while(bad){
+    while (bad) {
       input <- readline(paste("What is the value of", p, "?\n"))
       bad <- length(input) > 1
-      if(bad){
+      if (bad) {
         cat("Error in input! Try again\n")
       } else {
         bad <- FALSE
@@ -123,43 +131,43 @@ getVals <- function(names){
   return(vals)
 }
 
-instructCal = function(pt_names){
+instructCal = function(pt_names) {
   # prints
   inst0 <-  "Use your mouse, and the image, but..."
   inst1 <-  "...careful how you calibrate."
-  inst2  <- paste("Click IN ORDER:", paste(pt_names, collapse=', '))
+  inst2  <- paste("Click IN ORDER:", paste(pt_names, collapse = ', '))
   add <- list()
   add[[1]] <- "
-    |
-    |
-    |
-    |
-    |________x1__________________
+  |
+  |
+  |
+  |
+  |________x1__________________
   "
   add[[2]] <- "
-    |
-    |
-    |
-    |
-    |_____________________x2_____
+  |
+  |
+  |
+  |
+  |_____________________x2_____
   \n"
   add[[3]] <- "
-    |
-    |
-    |
-    y1
-    |____________________________
+  |
+  |
+  |
+  y1
+  |____________________________
   \n"
   add[[4]] <- "
-    |
-    y2
-    |
-    |
-    |____________________________
+  |
+  y2
+  |
+  |
+  |____________________________
   \n"
   cat(paste(inst1, inst2, sep = '\n'))
   cat('\n\n')
-  for(i in 1:4) {
+  for (i in 1:4) {
     cat("    Step", i, '----> Click on', pt_names[i])
     cat(add[[i]], '\n')
   }
