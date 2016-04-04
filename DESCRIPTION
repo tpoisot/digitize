@@ -10,7 +10,9 @@ Depends:
 Description: A package to digitize data from a graph; it requires user input for
     calibration and to locate the datapoints.
 License: GPL (>= 2)
+Encoding: UTF-8
 URL: http://www.poisotlab.io/
+BugReports: https://github.com/tpoisot/digitize/issues
 Imports:
     graphics,
     readbitmap (>= 0.1-4)

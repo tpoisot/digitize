@@ -3,3 +3,6 @@
 export(Calibrate)
 export(DigitData)
 export(ReadAndCal)
+export(digitize)
+importFrom(graphics,plot)
+importFrom(readbitmap,read.bitmap)
