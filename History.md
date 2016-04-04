@@ -1,4 +1,26 @@
-0.0.3 / 2016-03-23
+
+0.0.4 / 2016-06-16
+==================
+
+New features
+  * Revise ui (A single function with console-driven UI)
+  - maintain reverse compatibility
+
+Documentation
+  * Documentation fixes
+  * update the format of the code (spacing and such)
+
+Fixes for CRAN
+
+  - add graphics
+  - use `person` in DESCRIPTION
+
+Author/Contributor
+
+  - Add Tal Galili as contributor
+  - Jaime Ashander is maintainer
+
+0.0.3 / 2016-03-24
 ==================
 
 New features

@@ -1,14 +1,19 @@
 Package: digitize
 Version: 0.0.4
-Date: 2016-04-04
-Title: digitize : a plot digitizer in R
-Author: Timothee Poisot <tim@poisotlab.io>, Rene Sachse
-    <rene.sachse@googlemail.com>, Jaime Ashander <jashander@ucdavis.edu>, Tal Galili <tal.galili@gmail.com>
-Maintainer: Jaime Ashander <jashander@ucdavis.edu>
+Date: 2016-06-16
+Title: Use Data from Published Plots in R
+Authors@R: c(
+    person("Timothée", "Poisot", email =  "tpoisot@um2.fr", role  = c("aut")),
+    person("Rene", "Sachse", email = "rene.sachse@googlemail.com", role = c("aut")),
+    person("Jaime", "Ashander", email = "jashander@ucdavis.edu", role  = c("aut", "cre")),
+    person("Tal", "Galili",  email = "tal.galili@gmail.com", role  = c("aut"))
+    )
 Depends:
     R (>= 2.2.0)
-Description: A package to digitize data from a graph; it requires user input for
-    calibration and to locate the datapoints.
+Description: Import data from a digital image; it requires user input for
+    calibration and to locate the data points. The end result is similar to
+    'DataThief' and other other programs that 'digitize' published plots or
+    graphs.
 License: GPL (>= 2)
 Encoding: UTF-8
 URL: https://github.com/tpoisot/digitize/

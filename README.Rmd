@@ -24,9 +24,17 @@ if(!require(devtools)) install.packages('devtools')
 devtools::install_github("tpoisot/digitize")
 ```
 
-## How to use it
+## How to use it (version 0.0.3 and up)
 
-Read a [tutorial from Luke Miller](http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/).
+```{r example}
+tmp <- tempfile()
+png(tmp)
+plot(rnorm(10) + 1:10, xlab="x", ylab="y")
+dev.off()
+
+library(digitize)
+mydata <- digitize(tmp) ## follow instructions on console
+```
 
 ## Citation
 
@@ -39,3 +47,7 @@ citation('digitize')
 
 Works with three bitmap image formats (jpeg, png, bmp), automatically detecting
 the image type using package `readbitmap`.
+
+## Earlier versions
+
+Read a [tutorial from Luke Miller](http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/).
