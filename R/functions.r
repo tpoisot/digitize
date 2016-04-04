@@ -16,7 +16,7 @@ ReadAndCal <- function(fname)
 #' @importFrom readbitmap read.bitmap
 ReadImg <- function(fname)
 {
-  img <- read.bitmap(fname)
+  img <- readbitmap::read.bitmap(fname)
   op <- par(mar = c(0, 0, 0, 0))
   on.exit(par(op))
   plot.new()
@@ -142,18 +142,20 @@ instructCal = function(pt_names) {
 #' mydata <- digitize(tmp)
 #' }
 #' @export
-digitize = function(image_filename,
+digitize <- function(image_filename,
                     ...,
-                    x1 = NA,
-                    x2 = NA,
-                    y1 = NA,
-                    y2 = NA) {
+                    x1,
+                    x2,
+                    y1,
+                    y2) {
   pt_names <- c("x1", "x2", "y1", "y2")
   instructCal(pt_names)
+  flush.console()
   
   cal <- ReadAndCal(image_filename)
   
-  if (any(is.na(get(pt_names)))) {
+  missing_pt <- missing(x1) | missing(x2) | missing(y1) | missing(y2)
+  if (missing_pt) {
     ## I would abstract this into a seperate function but the assign
     ## below magics the vars x1, ..y2 into their appropriate vals
     ## and need to deal with environments to do that...
@@ -165,11 +167,13 @@ digitize = function(image_filename,
   cat("\n\n")
   cat(
     "..............NOW .............",
-    "Click all the data.",
-    "Right click when done!",
+    "Click all the data. (do NOT press esc!)",
+    "Once you are done - right click on the plot area and choose 'Stop'!",
     sep = "\n\n"
   )
   cat("\n\n")
+  flush.console()
+  
   data <- DigitData(...)
   
   out <- Calibrate(data, cal, x1, x2, y1, y2)
