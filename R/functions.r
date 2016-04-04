@@ -46,6 +46,70 @@ Calibrate <- function(data, calpoints, x1, x2, y1, y2)
   return(as.data.frame(data))
 }
 
+getVals <- function(names) {
+  vals <- list()
+  for (p in names) {
+    bad <- TRUE
+    while (bad) {
+      input <- readline(paste("What is the value of", p, "?\n"))
+      bad <- length(input) > 1
+      if (bad) {
+        cat("Error in input! Try again\n")
+      } else {
+        bad <- FALSE
+      }
+    }
+    vals[[p]] <- as.numeric(input)
+  }
+  return(vals)
+}
+
+instructCal = function(pt_names) {
+  # prints
+  inst0 <-  "Use your mouse, and the image, but..."
+  inst1 <-  "...careful how you calibrate."
+  inst2  <- paste("Click IN ORDER:", paste(pt_names, collapse = ', '))
+  add <- list()
+  add[[1]] <- "
+  |
+  |
+  |
+  |
+  |________x1__________________
+  "
+  add[[2]] <- "
+  |
+  |
+  |
+  |
+  |_____________________x2_____
+  \n"
+  add[[3]] <- "
+  |
+  |
+  |
+  y1
+  |____________________________
+  \n"
+  add[[4]] <- "
+  |
+  y2
+  |
+  |
+  |____________________________
+  \n"
+  cat(paste(inst1, inst2, sep = '\n'))
+  cat('\n\n')
+  for (i in 1:4) {
+    cat("    Step", i, '----> Click on', pt_names[i])
+    cat(add[[i]], '\n')
+  }
+}
+
+
+
+
+
 #' digitize an image
 #'
 #' @param image_filename the image file you wish to digitze
@@ -111,64 +175,4 @@ digitize = function(image_filename,
   out <- Calibrate(data, cal, x1, x2, y1, y2)
   row.names(out) <- NULL
   return(out)
-}
-
-getVals <- function(names) {
-  vals <- list()
-  for (p in names) {
-    bad <- TRUE
-    while (bad) {
-      input <- readline(paste("What is the value of", p, "?\n"))
-      bad <- length(input) > 1
-      if (bad) {
-        cat("Error in input! Try again\n")
-      } else {
-        bad <- FALSE
-      }
-    }
-    vals[[p]] <- as.numeric(input)
-  }
-  return(vals)
-}
-
-instructCal = function(pt_names) {
-  # prints
-  inst0 <-  "Use your mouse, and the image, but..."
-  inst1 <-  "...careful how you calibrate."
-  inst2  <- paste("Click IN ORDER:", paste(pt_names, collapse = ', '))
-  add <- list()
-  add[[1]] <- "
-  |
-  |
-  |
-  |
-  |________x1__________________
-  "
-  add[[2]] <- "
-  |
-  |
-  |
-  |
-  |_____________________x2_____
-  \n"
-  add[[3]] <- "
-  |
-  |
-  |
-  y1
-  |____________________________
-  \n"
-  add[[4]] <- "
-  |
-  y2
-  |
-  |
-  |____________________________
-  \n"
-  cat(paste(inst1, inst2, sep = '\n'))
-  cat('\n\n')
-  for (i in 1:4) {
-    cat("    Step", i, '----> Click on', pt_names[i])
-    cat(add[[i]], '\n')
-  }
 }
