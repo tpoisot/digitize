@@ -7,6 +7,11 @@ knitr::opts_chunk$set(
 ```
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/digitize)](http://cran.r-project.org/package=digitize)
+![](http://cranlogs.r-pkg.org/badges/digitize?color=yellow)
+![](http://cranlogs.r-pkg.org/badges/grand-total/digitize?color=yellowgreen)
+
+
 digitize : a plot digitizer in R
 ===============
 
@@ -15,11 +20,8 @@ Get the data from a graph by providing calibration points
 ## Install
 
 ```
-if(! require(devtools)) {
-    install.packages('devtools')
-    library(devtools)
-    }
-install_github("tpoisot/digitize")
+if(!require(devtools)) install.packages('devtools')
+devtools::install_github("tpoisot/digitize")
 ```
 
 ## How to use it
