@@ -4,6 +4,8 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/digitize)](http://cran.r-project.org/package=digitize)
 ![](http://cranlogs.r-pkg.org/badges/digitize?color=yellow)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/digitize?color=yellowgreen)
+[![Travis-CI Build Status](https://travis-ci.org/ashander/digitize.svg?branch=master)](https://travis-ci.org/ashander/digitize)
+[![Codecov branch](https://img.shields.io/codecov/c/github/ashander/digitize/master.svg?maxAge=2592000)](https://codecov.io/gh/ashander/digitize)
 
 
 digitize : a plot digitizer in R
