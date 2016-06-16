@@ -2,18 +2,23 @@
 0.0.4 / 2016-06-16
 ==================
 
+  * Cache packages and use code cov
+  * Cran-requested changes
+
 New features
-  * Revise ui (A single function with console-driven UI)
-  - maintain reverse compatibility
+  * Revise UI (A single function with console-driven UI)
+  - Maintain reverse compatibility
+  * Add basic tests for reverse compatibility
 
 Documentation
-  * Documentation fixes
-  * update the format of the code (spacing and such)
+  * Add usage instructions in README
+  * Note deprecation in the reverse-compatible functions
+  * Use travis CI for R CMD check and provide coverage from codecov
 
 Fixes for CRAN
-
-  - add graphics
-  - use `person` in DESCRIPTION
+  * Use importFrom for functions from graphics, stats, etc
+  * Add comments for cran release
+  - Use `person` in DESCRIPTION
 
 Author/Contributor
 

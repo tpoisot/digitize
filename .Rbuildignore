@@ -2,3 +2,4 @@ README*
 idea.txt
 History.md
 ^\.travis\.yml$
+^cran-comments\.md$
