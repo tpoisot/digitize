@@ -10,6 +10,8 @@ knitr::opts_chunk$set(
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/digitize)](http://cran.r-project.org/package=digitize)
 ![](http://cranlogs.r-pkg.org/badges/digitize?color=yellow)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/digitize?color=yellowgreen)
+[![Travis-CI Build Status](https://travis-ci.org/ashander/digitize.svg?branch=master)](https://travis-ci.org/ashander/digitize)
+[![Codecov branch](https://img.shields.io/codecov/c/github/ashander/digitize/master.svg?maxAge=2592000)](https://codecov.io/gh/ashander/digitize)
 
 
 digitize : a plot digitizer in R
@@ -24,9 +26,17 @@ if(!require(devtools)) install.packages('devtools')
 devtools::install_github("tpoisot/digitize")
 ```
 
-## How to use it
+## How to use it (version 0.0.3 and up)
 
-Read a [tutorial from Luke Miller](http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/).
+```{r example}
+tmp <- tempfile()
+png(tmp)
+plot(rnorm(10) + 1:10, xlab="x", ylab="y")
+dev.off()
+
+library(digitize)
+mydata <- digitize(tmp) ## follow instructions on console
+```
 
 ## Citation
 
@@ -39,3 +49,7 @@ citation('digitize')
 
 Works with three bitmap image formats (jpeg, png, bmp), automatically detecting
 the image type using package `readbitmap`.
+
+## Earlier versions
+
+Read a [tutorial from Luke Miller](http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/).

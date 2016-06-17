@@ -1,3 +1,12 @@
+#' (deprecated) Read image and calibrate
+#' @param fname Filename of the graphic to read
+#' @details deprecated. Called for side effect of user locating points. See
+#' `graphics::locator` for more. Usage explained at
+#' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
+#' @return `calpoints` List of the x and y coordinates of the calibration points
+#' @examples
+#' \dontrun{ReadAndCal(fname)}
+#' @importFrom graphics locator
 #' @export
 ReadAndCal <- function(fname)
 {
@@ -12,7 +21,7 @@ ReadAndCal <- function(fname)
   return(calpoints)
 }
 
-#' @importFrom graphics plot
+#' @importFrom graphics plot.new par rasterImage
 #' @importFrom readbitmap read.bitmap
 ReadImg <- function(fname)
 {
@@ -23,6 +32,15 @@ ReadImg <- function(fname)
   rasterImage(img, 0, 0, 1, 1)
 }
 
+#' (deprecated) Mark the data on an image
+#' @param col color of marker as in `par`
+#' @param type shape of marker as in `par`
+#' @param ... other args for `locator`
+#' @details deprecated. This function waits for the user to click the points of
+#' the coordinates. See `graphics::locator` for more. Usage explained at
+#' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
+#' @return `data` A list with the coordinates of the points
+#' @importFrom graphics locator
 #' @export
 DigitData <- function(col = 'red', type = 'p', ...)
 {
@@ -31,6 +49,20 @@ DigitData <- function(col = 'red', type = 'p', ...)
   locator(type = type, col = col, ...)
 }
 
+#' (deprecated) Digitize the data
+#' @param data output of `DigitData`
+#' @param calpoints output of `ReadAndCal`
+#' @param x1 X-coordinate of the leftmost x point (corrected)
+#' @param x2 X-coordinate of the rightmost x point (corrected)
+#' @param y1 Y-coordinate of the lower y point (corrected)
+#' @param y2 Y-coordinate of the upper y point (corrected)
+#' @details deprecated. This function corrects the data according to the
+#' calibration information. Usage further explained at
+#' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
+#' @return `data` A data frame with the corrected coordinates of the points
+#' @examples
+#' \dontrun{Calibrate(data,calpoints,x1,x2,y1,y2)}
+#' @importFrom stats lm
 #' @export
 Calibrate <- function(data, calpoints, x1, x2, y1, y2)
 {
@@ -51,7 +83,7 @@ getVals <- function(names) {
   for (p in names) {
     bad <- TRUE
     while (bad) {
-      input <- readline(paste("What is the value of", p, "?\n"))
+      input <- readline(paste("What is the return of", p, "?\n"))
       bad <- length(input) > 1
       if (bad) {
         cat("Error in input! Try again\n")
@@ -130,7 +162,7 @@ instructCal = function(pt_names) {
 #'
 #'          If not specified, you are prompted to enter these in the
 #'          console. Note, you don’t need to choose the end points of each axis,
-#'          only two points for which you know the x or y value.
+#'          only two points for which you know the x or y return.
 #' @return a data.frame containing the digitized data
 #' @examples
 #' \dontrun{
@@ -141,6 +173,7 @@ instructCal = function(pt_names) {
 #'
 #' mydata <- digitize(tmp)
 #' }
+#' @importFrom utils flush.console
 #' @export
 digitize <- function(image_filename,
                     ...,
@@ -167,8 +200,11 @@ digitize <- function(image_filename,
   cat("\n\n")
   cat(
     "..............NOW .............",
-    "Click all the data. (do NOT press esc!)",
-    "Once you are done - right click on the plot area and choose 'Stop'!",
+    "Click all the data. (Do not hit ESC, close the window or press any mouse key.)",
+    "Once you are done - exit:",
+    " - Windows: right click on the plot area and choose 'Stop'!",
+    " - X11: hit any mouse button other than the left one.",
+    " - quartz/OS X: hit ESC",
     sep = "\n\n"
   )
   cat("\n\n")
