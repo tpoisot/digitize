@@ -29,13 +29,16 @@ devtools::install_github("tpoisot/digitize")
 ## How to use it (version 0.0.3 and up)
 
 ```{r example}
+## make a temporary file
 tmp <- tempfile()
 png(tmp)
 plot(rnorm(10) + 1:10, xlab="x", ylab="y")
 dev.off()
 
 library(digitize)
-mydata <- digitize(tmp) ## follow instructions on console
+
+## follow instructions on console, printed out below
+mydata <- digitize(tmp)
 ```
 
 ## Citation

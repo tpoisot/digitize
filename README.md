@@ -24,6 +24,7 @@ devtools::install_github("tpoisot/digitize")
 
 
 ```r
+## make a temporary file
 tmp <- tempfile()
 png(tmp)
 plot(rnorm(10) + 1:10, xlab="x", ylab="y")
@@ -32,7 +33,9 @@ dev.off()
 #>                 2
 
 library(digitize)
-mydata <- digitize(tmp) ## follow instructions on console
+
+## follow instructions on console, printed out below
+mydata <- digitize(tmp)
 #> ...careful how you calibrate.
 #> Click IN ORDER: x1, x2, y1, y2
 #> 
@@ -67,21 +70,27 @@ mydata <- digitize(tmp) ## follow instructions on console
 #>   |____________________________
 #>   
 #> 
-#> What is the value of x1 ?
+#> What is the return of x1 ?
 #> 
-#> What is the value of x2 ?
+#> What is the return of x2 ?
 #> 
-#> What is the value of y1 ?
+#> What is the return of y1 ?
 #> 
-#> What is the value of y2 ?
+#> What is the return of y2 ?
 #> 
 #> 
 #> 
 #> ..............NOW .............
 #> 
-#> Click all the data. (do NOT press esc!)
+#> Click all the data. (Do not hit ESC, close the window or press any mouse key.)
 #> 
-#> Once you are done - right click on the plot area and choose 'Stop'!
+#> Once you are done - exit:
+#> 
+#>  - Windows: right click on the plot area and choose 'Stop'!
+#> 
+#>  - X11: hit any mouse button other than the left one.
+#> 
+#>  - quartz/OS X: hit ESC
 #> Error in model.frame.default(formula = c(x1, x2) ~ c(x), drop.unused.levels = TRUE): invalid type (NULL) for variable 'c(x)'
 ```
 
