@@ -1,9 +1,9 @@
 Package: digitize
 Version: 0.0.4
-Date: 2016-06-16
+Date: 2016-08-26
 Title: Use Data from Published Plots in R
 Authors@R: c(
-    person("Timothée", "Poisot", email =  "tpoisot@um2.fr", role  = c("aut")),
+    person("Timothée", "Poisot", email =  "tim@poisotlab.io", role  = c("aut")),
     person("Rene", "Sachse", email = "rene.sachse@googlemail.com", role = c("aut")),
     person("Jaime", "Ashander", email = "jashander@ucdavis.edu", role  = c("aut", "cre")),
     person("Tal", "Galili",  email = "tal.galili@gmail.com", role  = c("aut"))
