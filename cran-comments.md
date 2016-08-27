@@ -1,10 +1,6 @@
 This is a re-submission of the previous digitize package with a new maintainer.
 
-Previously, the package was archived on CRAN. Tim, the previous maintainer, is
-no longer reachable at email tpoisot@um2.fr . His new email is
-tim@poisotlab.io. I (jashander@ucdavis.edu) am taking over maintaining the
-package with Tim's permission. (Tim and I have discussed this with Kurt Hornik by email
-most recently on 2016-08-20).
+Previously, the package was archived on CRAN. Tim, the previous maintainer, is no longer reachable at email tpoisot@um2.fr . His new email is tim@poisotlab.io. I (jashander@ucdavis.edu) am taking over maintaining the package with Tim's permission. (Tim and I have discussed this with Kurt Hornik by email most recently on 2016-08-20).
 
 - Jaime
 
