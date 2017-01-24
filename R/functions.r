@@ -1,6 +1,6 @@
 #' (deprecated) Read image and calibrate
 #' @param fname Filename of the graphic to read
-#' @details deprecated. Called for side effect of user locating points. See
+#' @details deprecated, use \code{\link{digitize}} instead. Called for side effect of user locating points. See
 #' `graphics::locator` for more. Usage explained at
 #' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 #' @return `calpoints` List of the x and y coordinates of the calibration points
@@ -36,7 +36,7 @@ ReadImg <- function(fname)
 #' @param col color of marker as in `par`
 #' @param type shape of marker as in `par`
 #' @param ... other args for `locator`
-#' @details deprecated. This function waits for the user to click the points of
+#' @details deprecated, use \code{\link{digitize}} instead. This function waits for the user to click the points of
 #' the coordinates. See `graphics::locator` for more. Usage explained at
 #' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 #' @return `data` A list with the coordinates of the points
@@ -56,7 +56,7 @@ DigitData <- function(col = 'red', type = 'p', ...)
 #' @param x2 X-coordinate of the rightmost x point (corrected)
 #' @param y1 Y-coordinate of the lower y point (corrected)
 #' @param y2 Y-coordinate of the upper y point (corrected)
-#' @details deprecated. This function corrects the data according to the
+#' @details deprecated, use \code{\link{digitize}} instead. This function corrects the data according to the
 #' calibration information. Usage further explained at
 #' http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 #' @return `data` A data frame with the corrected coordinates of the points

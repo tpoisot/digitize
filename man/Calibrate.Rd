@@ -26,7 +26,7 @@ Calibrate(data, calpoints, x1, x2, y1, y2)
 (deprecated) Digitize the data
 }
 \details{
-deprecated. This function corrects the data according to the
+deprecated, use \code{\link{digitize}} instead. This function corrects the data according to the
 calibration information. Usage further explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }

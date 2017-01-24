@@ -16,7 +16,7 @@ ReadAndCal(fname)
 (deprecated) Read image and calibrate
 }
 \details{
-deprecated. Called for side effect of user locating points. See
+deprecated, use \code{\link{digitize}} instead. Called for side effect of user locating points. See
 `graphics::locator` for more. Usage explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }
