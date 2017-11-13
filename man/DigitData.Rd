@@ -24,4 +24,3 @@ deprecated, use \code{\link{digitize}} instead. This function waits for the user
 the coordinates. See `graphics::locator` for more. Usage explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }
-

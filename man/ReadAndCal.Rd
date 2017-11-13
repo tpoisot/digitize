@@ -4,7 +4,7 @@
 \alias{ReadAndCal}
 \title{(deprecated) Read image and calibrate}
 \usage{
-ReadAndCal(fname)
+ReadAndCal(fname, twopoints = F)
 }
 \arguments{
 \item{fname}{Filename of the graphic to read}
@@ -23,4 +23,3 @@ http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-dig
 \examples{
 \dontrun{ReadAndCal(fname)}
 }
-

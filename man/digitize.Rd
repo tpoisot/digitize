@@ -4,7 +4,7 @@
 \alias{digitize}
 \title{digitize an image}
 \usage{
-digitize(image_filename, ..., x1, x2, y1, y2)
+digitize(image_filename, ..., x1, x2, y1, y2, twopoints = F)
 }
 \arguments{
 \item{image_filename}{the image file you wish to digitze}
@@ -18,6 +18,8 @@ digitize(image_filename, ..., x1, x2, y1, y2)
 \item{y1}{(optional) the lower y-axis point}
 
 \item{y2}{(optional) the upper y-axis point}
+
+\item{twopoints}{(optional) if true calibrate with two points instead of four. Defaults to FALSE.}
 }
 \value{
 a data.frame containing the digitized data
@@ -50,4 +52,3 @@ dev.off()
 mydata <- digitize(tmp)
 }
 }
-

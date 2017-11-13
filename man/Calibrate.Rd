@@ -4,7 +4,7 @@
 \alias{Calibrate}
 \title{(deprecated) Digitize the data}
 \usage{
-Calibrate(data, calpoints, x1, x2, y1, y2)
+Calibrate(data, calpoints, x1, x2, y1, y2, twopoints = F)
 }
 \arguments{
 \item{data}{output of `DigitData`}
@@ -33,4 +33,3 @@ http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-dig
 \examples{
 \dontrun{Calibrate(data,calpoints,x1,x2,y1,y2)}
 }
-

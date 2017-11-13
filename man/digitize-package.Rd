@@ -12,4 +12,3 @@ The package provides one main function, \code{\link{digitize}}, which runs funct
 that 1) Read the image in and calibrate it, and 2) Digitize the data.
 The first step requires user input.
 }
-
