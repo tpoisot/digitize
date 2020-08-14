@@ -21,5 +21,5 @@ BugReports: https://github.com/tpoisot/digitize/issues
 Imports:
     graphics,
     readbitmap (>= 0.1-4)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 7.0.2
 Suggests: testthat
