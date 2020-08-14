@@ -1,3 +1,7 @@
+---
+output: github_document
+---
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
 		       collapse = TRUE,
@@ -5,39 +9,42 @@ knitr::opts_chunk$set(
 		         fig.path = "README-"
 			 )
 ```
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/digitize)](http://cran.r-project.org/package=digitize)
-![](http://cranlogs.r-pkg.org/badges/digitize?color=yellow)
-![](http://cranlogs.r-pkg.org/badges/grand-total/digitize?color=yellowgreen)
-[![Travis-CI Build Status](https://travis-ci.org/ashander/digitize.svg?branch=master)](https://travis-ci.org/ashander/digitize)
-[![Codecov branch](https://img.shields.io/codecov/c/github/ashander/digitize/master.svg?maxAge=2592000)](https://codecov.io/gh/ashander/digitize)
+<!-- README.md is generated from README.Rmd. Please edit that file and call `knitr::knit('README.Rmd')` within the top directory. -->
 
 
 digitize : a plot digitizer in R
 ===============
 
-Get the data from a graph by providing calibration points
+This is a fork of [digitize](https://github.com/tpoisot/digitize), an R package to manually extract data from graphs. It has been modified to streamline extraction of multiple figures with similar structure.
 
 ## Install
 
-```
+You must have `devtools` installed:
+
+```{r}
 if(!require(devtools)) install.packages('devtools')
-devtools::install_github("tpoisot/digitize")
+devtools::install_github("east-winds/digitize")
 ```
 
-## How to use it (version 0.0.3 and up)
+
+## How to use
 
 ```{r example}
-## make a temporary file
-tmp <- tempfile()
-png(tmp)
-plot(rnorm(10) + 1:10, xlab="x", ylab="y")
-dev.off()
-
 library(digitize)
 
-## follow instructions on console, printed out below
+## make a temporary image
+tmp <- tempfile()
+png(tmp)
+plot(rnorm(10) + 1:10, xlab="x", ylab="y",
+     xlim=c(0,10),ylim=c(0,10), xaxs="i", yaxs="i")
+dev.off()
+
+## digitize figure using calibration twopoints=T and pre-specifying x-axis
+#		(for example: digitizing multiple plots with same x-axis)
+#   Select calibration points (e.g., bottom-left and top-right) in blue:
+mydata <- digitize(tmp, x1=0, x2=10, twopoints=T)
+
+## digitize figure using default settings
 mydata <- digitize(tmp)
 ```
 
@@ -50,8 +57,7 @@ citation('digitize')
 ## Image Types
 
 
-Works with three bitmap image formats (jpeg, png, bmp), automatically detecting
-the image type using package `readbitmap`.
+Works with three bitmap image formats (jpeg, png, bmp), automatically detecting the image type using package `readbitmap`.
 
 ## Earlier versions
 
