@@ -1,8 +1,3 @@
----
-output: github_document
----
-
-
 <!-- README.md is generated from README.Rmd. Please edit that file and call `knitr::knit('README.Rmd')` within the top directory. -->
 
 
