@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.r
 \name{ReadAndCal}
 \alias{ReadAndCal}
-\title{(deprecated) Read image and calibrate}
+\title{(internal) Read image and calibrate}
 \usage{
 ReadAndCal(fname, twopoints = F)
 }
@@ -13,10 +13,10 @@ ReadAndCal(fname, twopoints = F)
 `calpoints` List of the x and y coordinates of the calibration points
 }
 \description{
-(deprecated) Read image and calibrate
+(internal) Read image and calibrate
 }
 \details{
-deprecated, use \code{\link{digitize}} instead. Called for side effect of user locating points. See
+internal, use \code{\link{digitize}} instead. Called for side effect of user locating points. See
 `graphics::locator` for more. Usage explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }

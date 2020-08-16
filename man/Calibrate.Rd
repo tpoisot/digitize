@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.r
 \name{Calibrate}
 \alias{Calibrate}
-\title{(deprecated) Digitize the data}
+\title{(internal) Calibrate the data}
 \usage{
 Calibrate(data, calpoints, x1, x2, y1, y2, twopoints = F)
 }
@@ -23,10 +23,10 @@ Calibrate(data, calpoints, x1, x2, y1, y2, twopoints = F)
 `data` A data frame with the corrected coordinates of the points
 }
 \description{
-(deprecated) Digitize the data
+(internal) Calibrate the data
 }
 \details{
-deprecated, use \code{\link{digitize}} instead. This function corrects the data according to the
+internal, use \code{\link{digitize}} instead. This function corrects the data according to the
 calibration information. Usage further explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }

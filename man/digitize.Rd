@@ -4,7 +4,7 @@
 \alias{digitize}
 \title{digitize an image}
 \usage{
-digitize(image_filename, ..., x1, x2, y1, y2, twopoints = F)
+digitize(image_filename, ..., x1, x2, y1, y2, twopoints = F, auto = F)
 }
 \arguments{
 \item{image_filename}{the image file you wish to digitze}
@@ -20,19 +20,25 @@ digitize(image_filename, ..., x1, x2, y1, y2, twopoints = F)
 \item{y2}{(optional) the upper y-axis point}
 
 \item{twopoints}{(optional) if true calibrate with two points instead of four. Defaults to FALSE.}
+
+\item{auto}{(optional) if true use automatic digitization. Defaults to FALSE.}
 }
 \value{
-a data.frame containing the digitized data
+data.frame containing the digitized data (auto=F)
+
+            OR
+            
+         spline function as output from splinefun() (auto=T)
 }
 \description{
 digitize an image
 }
 \details{
-Proceeds in two steps, both of which require user input
+Manual procedure (auto=F) proceeds in two steps, both of which require user input
          from the mouse:
-
+         
            1) Read the image in and calibrate it
-
+         
            2) Digitize the data
 
          Calibration points are optionally passed via arguments x1, x2, y1,
@@ -41,6 +47,14 @@ Proceeds in two steps, both of which require user input
          If not specified, you are prompted to enter these in the
          console. Note, you don’t need to choose the end points of each axis,
          only two points for which you know the x or y return.
+
+         Automated procedure (auto=T) requires user input in first step only:
+         
+           1) Read the image in and calibrate it by clicking on the bounds of the plot
+         
+           2) Automatically digitize high-contrast data within the plotting region
+         
+         Note: currently auto-digitize does not accommodate multiple lines within plotting region
 }
 \examples{
 \dontrun{
@@ -49,6 +63,6 @@ png(tmp)
 plot(rnorm(10) + 1:10, xlab="x", ylab="y")
 dev.off()
 
-mydata <- digitize(tmp)
+mydata <- digitize(tmp, auto=T)
 }
 }

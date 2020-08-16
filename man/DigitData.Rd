@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.r
 \name{DigitData}
 \alias{DigitData}
-\title{(deprecated) Mark the data on an image}
+\title{(internal) Mark the data on an image}
 \usage{
 DigitData(col = "red", type = "p", ...)
 }
@@ -17,10 +17,10 @@ DigitData(col = "red", type = "p", ...)
 `data` A list with the coordinates of the points
 }
 \description{
-(deprecated) Mark the data on an image
+(internal) Mark the data on an image
 }
 \details{
-deprecated, use \code{\link{digitize}} instead. This function waits for the user to click the points of
+internal, use \code{\link{digitize}} instead. This function waits for the user to click the points of
 the coordinates. See `graphics::locator` for more. Usage explained at
 http://lukemiller.org/index.php/2011/06/digitizing-data-from-old-plots-using-digitize/
 }

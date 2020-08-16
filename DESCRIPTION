@@ -20,6 +20,8 @@ URL: https://github.com/tpoisot/digitize/
 BugReports: https://github.com/tpoisot/digitize/issues
 Imports:
     graphics,
-    readbitmap (>= 0.1-4)
+    readbitmap (>= 0.1-4),
+		magick,
+		tidyverse
 RoxygenNote: 7.0.2
 Suggests: testthat
