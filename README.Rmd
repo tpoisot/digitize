@@ -17,15 +17,50 @@ This is a fork of [digitize](https://github.com/tpoisot/digitize), an R package 
 
 You must have `devtools` installed:
 
-```{r}
+```{r eval=FALSE}
 if(!require(devtools)) install.packages('devtools')
+library(devtools)
 devtools::install_github("east-winds/digitize")
 ```
 
+Or, to install locally:
 
-## How to use
+```{r eval=FALSE}
+if(!require(devtools)) install.packages('devtools')
+library(devtools)
+devtools::install("path/to/digitize")
+```
 
-```{r example}
+## Example: Auto digitization of line plot
+
+```{r line_example}
+library(digitize)
+
+## make a temporary image
+tmp <- tempfile()
+png(tmp)
+plot(x = 0:10, y = rnorm(11) + 0:10, xlab="x", ylab="y",
+     xlim=c(0,10),ylim=c(-1,11), type="l") + grid()
+dev.off()
+
+## auto-digitize figure using two calibration points and
+# 		pre-specifying both x-axis and y-axis
+#	 Returns splinefun
+
+#   Select calibration points (0,0) and (10,10) in blue:
+myfn <- digitize(tmp, x1=0, x2=10, y1=0, y2=10, twopoints=T, auto=T)
+
+# Plot result
+x = seq(0,10,0.1)
+plot(x, myfn(x), type='l')
+
+
+```
+
+
+## Example: Manual digitization of scatter plot
+
+```{r pt_example}
 library(digitize)
 
 ## make a temporary image
@@ -40,8 +75,6 @@ dev.off()
 #   Select calibration points (e.g., bottom-left and top-right) in blue:
 mydata <- digitize(tmp, x1=0, x2=10, twopoints=T)
 
-## digitize figure using default settings
-mydata <- digitize(tmp)
 ```
 
 ## Citation

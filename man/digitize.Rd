@@ -27,7 +27,7 @@ digitize(image_filename, ..., x1, x2, y1, y2, twopoints = F, auto = F)
 data.frame containing the digitized data (auto=F)
 
             OR
-            
+
          spline function as output from splinefun() (auto=T)
 }
 \description{
@@ -36,9 +36,9 @@ digitize an image
 \details{
 Manual procedure (auto=F) proceeds in two steps, both of which require user input
          from the mouse:
-         
+
            1) Read the image in and calibrate it
-         
+
            2) Digitize the data
 
          Calibration points are optionally passed via arguments x1, x2, y1,
@@ -49,11 +49,11 @@ Manual procedure (auto=F) proceeds in two steps, both of which require user inpu
          only two points for which you know the x or y return.
 
          Automated procedure (auto=T) requires user input in first step only:
-         
+
            1) Read the image in and calibrate it by clicking on the bounds of the plot
-         
+
            2) Automatically digitize high-contrast data within the plotting region
-         
+
          Note: currently auto-digitize does not accommodate multiple lines within plotting region
 }
 \examples{

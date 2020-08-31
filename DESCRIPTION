@@ -22,6 +22,7 @@ Imports:
     graphics,
     readbitmap (>= 0.1-4),
 		magick,
-		tidyverse
+		magrittr,
+		dplyr
 RoxygenNote: 7.0.2
 Suggests: testthat
