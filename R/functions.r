@@ -94,7 +94,7 @@ Calibrate <- function(data, calpoints, x1, x2, y1, y2, twopoints = F)
 
   data$x <- data$x * cx[2] + cx[1]
   data$y <- data$y * cy[2] + cy[1]
-
+  
   return(as.data.frame(data))
 }
 
@@ -239,7 +239,9 @@ digitize <- function(image_filename,
                     y1,
                     y2,
                     twopoints = F,
-                    auto = F) {
+                    auto = F,
+                    line_1 = F,
+                    line_2 = F) {
   if (twopoints) {
     pt_names <- c("x1y1", "x2y2")
     instructCal(pt_names, twopoints = twopoints)
@@ -264,7 +266,7 @@ digitize <- function(image_filename,
     y2 <- getVals('y2')[['y2']]  }
 
   cat("\n\n")
-
+  
   if (auto) {
     # automatically read graph
     cat(
@@ -278,23 +280,29 @@ digitize <- function(image_filename,
 		#	Scale through the following parameters:
 		#		image_median: radius
 		#		image_threshold: saturation %
-
+    ch = ""
 		for (r in c(5,4,3,2))  {
-			for (sat in c(20,30,40)) {
-
-		    im <- image_read(image_filename) %>%
-		        image_quantize() %>%
-		        image_median(radius=r) %>%
-		        image_threshold("white", paste0(sat,"%")) %>%
-		        image_channel("saturation") %>%
-		        image_negate()
+			for (sat in c(30,40,50)) {
+			  if (line_1 == T) {
+			    ch = "lightness" # gets red or zuigao
+			  } else if (line_2 == T) {
+			    ch = "hue" # gets blue or zuidi
+			  } else {
+			    ch = "saturation" # gets single line
+			  }
+			  im <- image_read(image_filename) %>%
+			    image_quantize() %>%
+			    image_median(radius=r) %>%
+			    image_threshold("white", paste0(sat,"%")) %>%
+			    image_channel(ch) %>%
+			    image_negate()
 
 		    # bounds of image we wish to digitize (i.e., within axes)
 		    im.bounds <- Calibrate(cal,
 		                           list(x=c(0,1), y=c(0,1)),
 		                           1, image_info(im)$width, 1, image_info(im)$height,
 		                           twopoints = twopoints)
-
+		    
 		    data <- image_data(im)[1,,] %>%
 		      as.data.frame() %>%
 		      mutate(Row = 1:nrow(.)) %>%
@@ -310,18 +318,17 @@ digitize <- function(image_filename,
 		             y >= min(im.bounds$y), y <= max(im.bounds$y)) %>%
 		      select(x,y)
 
-				# check if threshold sufficient to get 50 points
 				if (nrow(data) > 100) { break }
 			}
 			if (nrow(data) > 100) { break }
 		}
-
+    
     data.line <- Calibrate(data, as.list(im.bounds), x1, x2, y1, y2, twopoints = twopoints)
     outfn <- splinefun(data.line$x, data.line$y, method = "fmm")
-
+    
 		# restrict domain of function to avoid extrapolation
 	  out <- function(x){
-	      ifelse(min(data.line$x) <= x & x <= max(data.line$x),outfn(x),NA)
+	    ifelse(min(data.line$x) <= x & x <= max(data.line$x),outfn(x),NA)
 	  }
   } else {
     cat(
@@ -340,6 +347,5 @@ digitize <- function(image_filename,
     out <- Calibrate(data, cal, x1, x2, y1, y2, twopoints = twopoints)
     row.names(out) <- NULL
   }
-
   return(out)
 }
